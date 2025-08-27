@@ -8,6 +8,8 @@ import { URL } from "../utils/constants";
 function Login() {
   const [email, setEmail] = useState("prince@gmail.com");
   const [password, setPassword] = useState("Prince@123");
+  const [error, setError] = useState("");
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,14 +27,14 @@ function Login() {
       dispatch(addUser(res.data));
       navigate("/");
     } catch (err) {
-      console.log(err);
+      setError(err?.response?.message || "Something went wrong");
     }
   };
 
   return (
     <>
       <div className="flex items-center justify-center p-6">
-        <div className="card bg-primary text-primary-content w-full max-w-lg">
+        <div className="card bg-indigo-400 text-primary-content w-full max-w-lg">
           <div className="card-body flex flex-col items-center gap-4">
             <h2 className="card-title">Login</h2>
 
@@ -56,6 +58,7 @@ function Login() {
               />
             </fieldset>
 
+            <p className="text-red-500 font-medium">{error}</p>
             <div className="card-actions justify-end w-full">
               <button onClick={handleLogin} className="btn mx-auto">
                 Login
