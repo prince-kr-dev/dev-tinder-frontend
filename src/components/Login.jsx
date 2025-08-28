@@ -21,7 +21,7 @@ function Login() {
         { withCredentials: true }
       );
       dispatch(addUser(res.data.user || res.data));
-      navigate("/");
+      navigate("/feed");
     } catch (err) {
       setError(err?.response?.message || "Something went wrong");
     }

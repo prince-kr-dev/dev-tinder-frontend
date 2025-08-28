@@ -5,7 +5,7 @@ function UserCard({user}) {
   // console.log(user);
   
   return (
-    <div className="card bg-base-100 w-full max-w-sm shadow-md">
+    <div className="card bg-base-300 w-full max-w-sm shadow-md">
       <figure className="w-full h-60 overflow-hidden">
         <img
           className="w-full h-full object-cover"
@@ -21,10 +21,10 @@ function UserCard({user}) {
         </p>
         <div className="flex items-center justify-between px-5">
           <div className="card-actions justify-end">
-            <button className="btn bg-red-500">Ignore</button>
+            <button className="btn bg-indigo-600">Ignore</button>
           </div>
           <div className="card-actions justify-end">
-            <button className="btn bg-green-500">Interested</button>
+            <button className="btn bg-pink-500">Interested</button>
           </div>
         </div>
       </div>

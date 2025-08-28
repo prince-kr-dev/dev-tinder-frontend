@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-base-300 text-neutral-content p-6 mt-auto">
+    <footer className="bg-base-300 text-neutral-content p-3 mt-auto">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         {/* Left Side */}
         <aside className="flex items-center gap-3 text-center md:text-left">
