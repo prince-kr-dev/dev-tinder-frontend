@@ -6,10 +6,10 @@ import { useNavigate } from "react-router-dom";
 import { URL } from "../utils/constants";
 
 function Login() {
-  const [email, setEmail] = useState("prince@gmail.com");
-  const [password, setPassword] = useState("Prince@123");
-  // const [email, setEmail] = useState("walter@gmail.com");
-  // const [password, setPassword] = useState("Walter@1234");
+  // const [email, setEmail] = useState("prince@gmail.com");
+  // const [password, setPassword] = useState("Prince@123");
+  const [email, setEmail] = useState("walter@gmail.com");
+  const [password, setPassword] = useState("Walter@1234");
   const [error, setError] = useState("");
 
   const dispatch = useDispatch();

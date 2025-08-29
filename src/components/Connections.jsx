@@ -17,7 +17,7 @@ function Connections() {
     try{
       
       const res = await axios.get(URL + "/user/connections", {withCredentials:true})
-      console.log(res.data.data);
+      // console.log(res.data.data);
       dispatch(addConnections(res.data.data))
     }catch(err){
       console.log(err);
@@ -28,8 +28,8 @@ function Connections() {
     fetchConnections();
   },[])
   
-  if(!connections) return <h1>Loading...</h1>;
-  if(connections.length === 0) return <h1>No Connections</h1>
+  if(!connections) return <h1 className='mt-10 text-center text-xl'>Loading...</h1>;
+  if(connections.length === 0) return <h1 className='mt-10 text-center text-xl'>No Connections</h1>
 
 
   return (

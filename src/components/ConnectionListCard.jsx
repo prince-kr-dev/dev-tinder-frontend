@@ -5,7 +5,7 @@ function ConnectionListCard({ data }) {
 
   return (
     <ul className="max-w-150 bg-base-300 rounded-2xl shadow-md divide-y divide-base-300 m-auto">
-      <li className="flex items-center gap-4 p-4 hover:bg-base-200 transition rounded-xl">
+      <li className="mb-4 flex items-center gap-4 p-4 hover:bg-base-200 transition rounded-xl">
         <img
           className="w-14 h-14 rounded-full object-cover shadow"
           src={data.photoURL || "https://via.placeholder.com/150"}
