@@ -1,8 +1,11 @@
 import React from "react";
 
 function UserCard({user}) {
-  const {firstName, lastName, photoURL} = user;
-  // console.log(user);
+  if(!user) return null;
+  const {firstName, lastName, photoURL, about} = user;
+
+  // console.log(about);
+  
   
   return (
     <div className="card bg-base-300 w-full max-w-sm shadow-md">
@@ -16,8 +19,7 @@ function UserCard({user}) {
       <div className="card-body">
         <h2 className="card-title">{firstName} {lastName}</h2>
         <p>
-          A card component has a figure, a body part, and inside body there are
-          title and actions parts
+          {about}
         </p>
         <div className="flex items-center justify-between px-5">
           <div className="card-actions justify-end">
