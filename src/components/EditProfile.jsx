@@ -6,18 +6,31 @@ import { URL } from "../utils/constants";
 import { useNavigate } from "react-router-dom";
 
 const EditProfile = ({ user }) => {
-  const [firstName, setFirstName] = useState(user.firstName);
-  const [lastName, setLastName] = useState(user.lastName);
-  const [age, setAge] = useState(user.age);
-  const [gender, setGender] = useState(user.gender);
-  const [about, setAbout] = useState(user.about);
-  const [photoURL, setphotoURL] = useState(user.photoURL);
+  // ✅ Initialize with safe defaults
+  const [firstName, setFirstName] = useState(user?.firstName || "");
+  const [lastName, setLastName] = useState(user?.lastName || "");
+  const [age, setAge] = useState(user?.age || "");
+  const [gender, setGender] = useState(user?.gender || "");
+  const [about, setAbout] = useState(user?.about || "");
+  const [photoURL, setPhotoURL] = useState(user?.photoURL || "");
 
   const [showToast, setShowToast] = useState(false);
-  const [countdown, setCountdown] = useState(3); // ⏳ countdown state
+  const [countdown, setCountdown] = useState(3);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  // ✅ Sync state when user changes (important for async loading)
+  useEffect(() => {
+    if (user) {
+      setFirstName(user.firstName || "");
+      setLastName(user.lastName || "");
+      setAge(user.age || "");
+      setGender(user.gender || "");
+      setAbout(user.about || "");
+      setPhotoURL(user.photoURL || "");
+    }
+  }, [user]);
 
   const handleSave = async () => {
     try {
@@ -33,14 +46,17 @@ const EditProfile = ({ user }) => {
         },
         { withCredentials: true }
       );
+
       dispatch(addUser(res?.data?.data));
 
       setShowToast(true);
       setCountdown(3);
     } catch (err) {
-      console.log(err);
+      console.error("Profile update failed:", err);
     }
   };
+
+  // ✅ Auto close toast after countdown
   useEffect(() => {
     if (showToast && countdown > 0) {
       const timer = setTimeout(() => {
@@ -64,9 +80,10 @@ const EditProfile = ({ user }) => {
                 {countdown}
               </span>
             </span>
-          </div> 
+          </div>
         </div>
       )}
+
       <div className="w-full max-w-md bg-gray-800 shadow-xl rounded-xl p-5">
         <h2 className="text-xl font-semibold text-center mb-5">Edit Profile</h2>
 
@@ -151,7 +168,7 @@ const EditProfile = ({ user }) => {
             <input
               type="url"
               value={photoURL}
-              onChange={(e) => setphotoURL(e.target.value)}
+              onChange={(e) => setPhotoURL(e.target.value)}
               className="w-full border border-gray-600 bg-gray-700 text-white rounded-lg p-2 focus:ring-2 focus:ring-blue-400"
               placeholder="Enter photo URL"
             />

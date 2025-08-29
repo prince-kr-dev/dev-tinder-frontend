@@ -7,27 +7,24 @@ import appStore from "./utils/appStore";
 import Feed from "./components/Feed";
 import ViewProfile from "./components/ViewProfile";
 import Connections from "./components/Connections";
-import Requests from "./components/Requests"
+import Requests from "./components/Requests";
 
 function App() {
   return (
-    <>
     <Provider store={appStore}>
       <BrowserRouter basename="/">
         <Routes>
-          <Route path="/" element={<Body/>}>
-            <Route path="/feed" element={<Feed/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/viewprofile" element={<ViewProfile/>}/>
-            <Route path="/connections" element={<Connections/>}/>
-            <Route path="/requests" element={<Requests/>} />
+          <Route path="/" element={<Body />}>
+            <Route path="/feed" element={<Feed />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/viewprofile" element={<ViewProfile />} />
+            <Route path="/connections" element={<Connections />} />
+            <Route path="/requests" element={<Requests />} />
           </Route>
         </Routes>
       </BrowserRouter>
     </Provider>
-    
-    </>
   );
 }
 

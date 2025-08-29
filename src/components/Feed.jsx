@@ -9,7 +9,6 @@ function Feed() {
   const feed = useSelector((store) => store.feed);
   const dispatch = useDispatch();
 
-
   const getFeed = async () => {
     if (feed) return;
 
@@ -24,6 +23,13 @@ function Feed() {
   useEffect(() => {
     getFeed();
   }, []);
+
+  if (!feed)
+    return <h1 className="text-lg text-center pt-10">Not available</h1>;
+
+  if (feed.length <= 0) {
+    return <h1 className="text-lg text-center pt-10">No more users found</h1>;
+  }
 
   return (
     feed && (
